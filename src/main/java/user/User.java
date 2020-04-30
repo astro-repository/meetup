@@ -8,14 +8,9 @@ public class User implements UserInterface {
 	
 	public static int meetingId = 0;
 	
-	private String nom, prenoms;
+	private String nom;
+	private String prenoms;
 	private HashMap<User, ArrayList<String>> myMessage = new HashMap<User, ArrayList<String>>();
-	
-	private HashMap<User, ArrayList<String>> mettingParticipate = new HashMap<User, ArrayList<String>>();
-	private HashMap<User, ArrayList<String>> mettingAttendeeList = new HashMap<User, ArrayList<String>>();
-	private HashMap<User, ArrayList<String>> mettingWaitingList = new HashMap<User, ArrayList<String>>();
-	
-	private HashMap<User, ArrayList<String>> createMeeting = new HashMap<User, ArrayList<String>>();
 
 	public User(String nom, String prenoms) {
 
@@ -71,39 +66,6 @@ public class User implements UserInterface {
 		}
 	}
 	
-	public void participateMeeting(User administrateur) {
-		
-	}
-
-	public void sendMessageToGroup(User idGroup) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void readAllMessage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void readAllGroupMessage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void proposeGroup(User[] tab) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void participateMeeting() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void createMeeting(User[] tab) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public String getNom() {
 		return nom;
@@ -121,19 +83,4 @@ public class User implements UserInterface {
 		this.prenoms = prenoms;
 	}
 
-	public HashMap<User, ArrayList<String>> getMyMessage() {
-		return myMessage;
-	}
-
-	public void setMyMessage(HashMap<User, ArrayList<String>> myMessage) {
-		this.myMessage = myMessage;
-	}
-
-	public void readMessage(User to) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 }

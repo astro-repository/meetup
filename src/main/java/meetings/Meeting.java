@@ -1,58 +1,107 @@
 package meetings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import user.User;
 
-public class Meeting extends MeetingLocation {
+public class Meeting extends MeetingLocation implements MeetingInterface {
+	
+	private String 	title;
+	private String 	description;
+	private int 	attendeesLimit;
+	private User 	member;
+	
+	
+	private HashMap<Meeting, ArrayList<User>> meetingNotAttendee 		= new HashMap<Meeting, ArrayList<User>>();
+	private HashMap<Meeting, ArrayList<User>> meetingAttendeeList 		= new HashMap<Meeting, ArrayList<User>>();
+	private HashMap<Meeting, ArrayList<User>> meetingWaitingList 		= new HashMap<Meeting, ArrayList<User>>();
 
-	private String title;
-	private String description;
-	private int attendeesLimit;
-	private ArrayList<User> host = new ArrayList<User>();
-	private User member;
-	private MeetingGroupProposalStatus status = MeetingGroupProposalStatus.INVERIFICATION;
-
-	public ArrayList<User> meetingAttendee 		= new ArrayList<User>();
-	public ArrayList<User> meetingNotAttendee 	= new ArrayList<User>();
-	public ArrayList<User> meetingWaitlistMember = new ArrayList<User>();
-
+	
 	public Meeting(
 			User userId, String title,
-			String description, String locationCountryCode,
-			int attendeesLimit,  String locationCity
+			String description, int attendeesLimit,
+			String locationCity
 			) {
-
-		super(locationCountryCode, locationCity);
-
-		this.host.add(userId);
+		
+		super(locationCity);
 		this.member			= userId;
 		this.title 			= title;
 		this.description 	= description;
 		this.attendeesLimit = attendeesLimit;
-
+		
 	}
 	
-	private void createMeeting() {
+	public void proposeGroup(int meetId, 
+			ArrayList<User> mAttendee, ArrayList<User> mNotAttendee, 
+			ArrayList<User> mWaitlistMember) {
 		
-		if (meetingAttendee.indexOf(this.member) != -1) {
+		if (
+				mAttendee.size()<this.attendeesLimit && 
+				mNotAttendee.size()<this.attendeesLimit && 
+				mWaitlistMember.size()<this.attendeesLimit
+				) {
+			
+			this.meetingAttendeeList.put(this, mAttendee);
+			this.meetingNotAttendee.put(this, mNotAttendee);
+			this.meetingWaitingList.put(this, mWaitlistMember);
 			
 		}
 		
 	}
-	
-	private void attendeeMeeting(boolean bool) {
-		
-		if (bool) {
-			this.status = MeetingGroupProposalStatus.ACCEPTED;
-		}
-		this.status = MeetingGroupProposalStatus.REJECTED;
-		
-//		if (meetingAttendee.size() >= this.attendeesLimit) {
-//			
-//		}
-		
+
+	public String getTitle() {
+		return title;
 	}
-	
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getAttendeesLimit() {
+		return this.attendeesLimit;
+	}
+
+	public void setAttendeesLimit(int attendeesLimit) {
+		this.attendeesLimit = attendeesLimit;
+	}
+
+	public User getMember() {
+		return member;
+	}
+
+	public HashMap<Meeting, ArrayList<User>> getMeetingNotAttendee() {
+		return meetingNotAttendee;
+	}
+
+	public void setMeetingNotAttendee(HashMap<Meeting, ArrayList<User>> meetingNotAttendee) {
+		this.meetingNotAttendee = meetingNotAttendee;
+	}
+
+	public HashMap<Meeting, ArrayList<User>> getMeetingAttendeeList() {
+		return meetingAttendeeList;
+	}
+
+	public void setMeetingAttendeeList(HashMap<Meeting, ArrayList<User>> meetingAttendeeList) {
+		this.meetingAttendeeList = meetingAttendeeList;
+	}
+
+	public HashMap<Meeting, ArrayList<User>> getMeetingWaitingList() {
+		return meetingWaitingList;
+	}
+
+	public void setMeetingWaitingList(HashMap<Meeting, ArrayList<User>> meetingWaitingList) {
+		this.meetingWaitingList = meetingWaitingList;
+	}
+
+		
 	
 }

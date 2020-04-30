@@ -12,9 +12,9 @@ public class AppUser {
 		
 //		Cédrick.readLastUserMessage(Christian);
 //		Cédrick.readLastUserMessage(Touré);
-		Cédrick.readAllUserMessage(Touré);
+//		Cédrick.readAllUserMessage(Touré);
 //		Cédrick.readAllUserMessage(Christian);
-//		Cédrick.readAllUsersMessage();
+		Cédrick.readAllUsersMessage();
 	}
 	
 }

@@ -30,6 +30,9 @@ public class AppAdministrator {
 		Clarisse.sendMessageInMeetingGroup(Amani, 1, "Clarisse send first message in group number 2");
 //		Cédrick.readLastMessageInMeetingGroup(Amani, 1);
 		Cédrick.readAllMessageInMeetingGroup(Amani, 1);
+		
+		Cédrick.proposeGroup(Amani, 1, participant2);
+		Amani.showProposition();
 	}
 	
 }
