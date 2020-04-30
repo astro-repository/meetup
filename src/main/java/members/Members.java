@@ -19,12 +19,13 @@ public class Members extends User {
 		if ( groupAdmin.getMeetingAccepted().containsKey(meetId) ) {
 			
 			Meeting meeting = groupAdmin.getMeetingAccepted().get(meetId);
+			
 			if ( groupAdmin.getMeetingAccepted()
 					.get(meetId)
 						.getMeetingAttendeeList()
 						.get(meeting)
 							.contains(this) ) {
-				
+				System.out.println(meeting);
 				groupAdmin.meetingMessage
 					.get(meetId)
 					.add(this.getNom() +" " + this.getPrenoms() + " : " + msg);
@@ -74,7 +75,7 @@ public class Members extends User {
 				System.out.println(
 						groupAdmin.meetingMessage
 						.get(meetId)
-						.get(groupAdmin.meetingMessage.size() - 1)
+						.get(groupAdmin.meetingMessage.get(meetId).size() - 1)
 				);
 				
 			}

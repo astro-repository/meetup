@@ -41,7 +41,7 @@ public class Administration extends User {
 			for (Map.Entry<Meeting, ArrayList<User>> entry : meeting.getMeetingAttendeeList().entrySet()) {
 				ArrayList<User> attendee = entry.getValue();
 				for (User user : attendee) {
-					System.out.println(user);
+					System.out.println(user.getNom() + " " + user.getPrenoms());
 				}
 			}
 
@@ -49,7 +49,7 @@ public class Administration extends User {
 			for (Map.Entry<Meeting, ArrayList<User>> entry : meeting.getMeetingWaitingList().entrySet()) {
 				ArrayList<User> waiting = entry.getValue();
 				for (User user : waiting) {
-					System.out.println(user);
+					System.out.println(user.getNom() + " " + user.getPrenoms());
 				}
 			}
 			
@@ -57,7 +57,7 @@ public class Administration extends User {
 			for (Map.Entry<Meeting, ArrayList<User>> entry : meeting.getMeetingNotAttendee().entrySet()) {
 				ArrayList<User> notAttendee = entry.getValue();
 				for (User user : notAttendee) {
-					System.out.println(user);
+					System.out.println(user.getNom() + " " + user.getPrenoms());
 				}
 			}
 			

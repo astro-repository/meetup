@@ -24,6 +24,14 @@ public class App {
 		Meeting ordreDuJour = new Meeting(Cédrick, "First meeting Cédrick", "Mise au point", 5, "Abidjan");
 		ordreDuJour.proposeGroup(0, mAttendee, mNotAttendee, mWaitlistMember);
 		Cédrick.proposeMeetingAdmin(Amani, ordreDuJour);
+		System.out.println(Amani.getAllPropositions());
+		System.out.println(Amani.showProposition());
+		Moro.sendMessageInMeetingGroup(Amani, 1, "TEst");
+		Moro.sendMessageInMeetingGroup(Amani, 1, "Message");
+		Frederic.sendMessageInMeetingGroup(Amani, 1, "TEst");
+		System.out.println("mESSAGE");
+		Frederic.readAllMessageInMeetingGroup(Amani, 1);
+		Frederic.readLastMessageInMeetingGroup(Amani, 1);
 	}
 
 }
