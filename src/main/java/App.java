@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 import administration.Administration;
 import meetings.Meeting;
 import members.Members;
+import user.User;
 
 public class App {
 
@@ -9,10 +12,17 @@ public class App {
 		Administration Amani = new Administration("Amani", "Christian");
 		Members Frederic = new Members("Boye", "Fréderic");
 		Members Cédrick = new Members("Touré", "Cédrick");
-		Members Moro = new Members("Moro", "Unknown");
+		Members Moro = new Members("Moro", "Usernknown");
+		
+		ArrayList<User> mAttendee = new ArrayList<User>();
+		ArrayList<User> mNotAttendee = new ArrayList<User>();
+		ArrayList<User> mWaitlistMember = new ArrayList<User>();
+		
+		mAttendee.add(Frederic);
+		mAttendee.add(Moro);
 		
 		Meeting ordreDuJour = new Meeting(Cédrick, "First meeting Cédrick", "Mise au point", 5, "Abidjan");
-		ordreDuJour.
+		ordreDuJour.proposeGroup(0, mAttendee, mNotAttendee, mWaitlistMember);
 		Cédrick.proposeMeetingAdmin(Amani, ordreDuJour);
 	}
 
