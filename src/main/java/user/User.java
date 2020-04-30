@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User implements UserInterface {
+public abstract class User implements UserInterface {
 	
-	public static int meetingId = 0;
+//	public static int meetingId = 0;
 	
 	private String nom;
 	private String prenoms;

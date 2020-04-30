@@ -61,7 +61,7 @@ public class Members extends User {
 
 	}
 	
-	public void readLastMessageInMeetingGroup(Administration groupAdmin, int meetId) {
+	public String readLastMessageInMeetingGroup(Administration groupAdmin, int meetId) {
 		
 		if ( groupAdmin.getMeetingAccepted().containsKey(meetId) ) {
 			
@@ -72,17 +72,13 @@ public class Members extends User {
 						.get(meeting)
 							.contains(this) ) {
 				
-				System.out.println(
-						groupAdmin.meetingMessage
+				return groupAdmin.meetingMessage
 						.get(meetId)
-						.get(groupAdmin.meetingMessage.get(meetId).size() - 1)
-				);
+						.get(groupAdmin.meetingMessage.get(meetId).size() - 1);
 				
 			}
 		
-		} else {
-			System.out.println("Group doesn't exist !");
 		}
-
+		return "Group doesn't exist !";
 	}
 }

@@ -29,7 +29,7 @@ public class App {
 		Moro.sendMessageInMeetingGroup(Amani, 1, "TEst");
 		Moro.sendMessageInMeetingGroup(Amani, 1, "Message");
 		Frederic.sendMessageInMeetingGroup(Amani, 1, "TEst");
-		System.out.println("mESSAGE");
+		System.out.println("Message");
 		Frederic.readAllMessageInMeetingGroup(Amani, 1);
 		Frederic.readLastMessageInMeetingGroup(Amani, 1);
 	}

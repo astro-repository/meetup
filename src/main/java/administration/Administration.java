@@ -4,23 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Map.Entry;
 
 import meetings.Meeting;
 import user.User;
 
-public class Administration extends User {
+public class Administration extends User implements AdministrationInterface {
 	
 	private static int meetingCompt = 0;
 	
 	private ArrayList<Meeting> allPropositions 			= new ArrayList<Meeting>();
 	private HashMap<Integer, Meeting> meetingAccepted 	= new HashMap<Integer, Meeting>();
 	public HashMap<Integer, ArrayList<String>> meetingMessage 	= new HashMap<Integer, ArrayList<String>>();
-//	private HashMap<Integer, ArrayList<String>> meetingAccepted = new HashMap<Integer, ArrayList<String>>();
 
 	public Administration(String nom, String prenoms) {
 		super(nom, prenoms);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ArrayList<Meeting> getAllPropositions() {
@@ -64,23 +61,26 @@ public class Administration extends User {
 			System.out.println("Accepted (Y) / Rejected (N)");
 			String response = clavier.nextLine();
 			if ( response.equals("Y") ) {
-				this.meetingCompt++;
-				this.meetingAccepted.put(this.meetingCompt, meeting);
+				meetingCompt++;
+				this.meetingAccepted.put(meetingCompt, meeting);
 				ArrayList<String> msg = new ArrayList<String>();
 				msg.add(
 						"Group Create by "+ this.getNom() + " " + 
 								this.getPrenoms() +", Propose by "+ meeting.getMember().getNom() + 
 									" " + meeting.getMember().getPrenoms()
 				);
-				this.meetingMessage.put(this.meetingCompt, msg);
+				this.meetingMessage.put(meetingCompt, msg);
+				clavier.close();
 				return "Proposition accepted to create meeting !\n Meeting Id is : " +
-						String.valueOf(this.meetingCompt);
+						String.valueOf(meetingCompt);
 			} else {
 				this.allPropositions.remove(meeting);
+				clavier.close();
 				return "Proposition refused to create meeting !";
 			}
 
 		}
+		clavier.close();
 		return "Proposition not found !";
 	}
 
