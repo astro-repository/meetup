@@ -16,7 +16,6 @@ public class Meeting extends MeetingLocation implements MeetingInterface {
 	private HashMap<Meeting, ArrayList<User>> meetingNotAttendee 		= new HashMap<Meeting, ArrayList<User>>();
 	private HashMap<Meeting, ArrayList<User>> meetingAttendeeList 		= new HashMap<Meeting, ArrayList<User>>();
 	private HashMap<Meeting, ArrayList<User>> meetingWaitingList 		= new HashMap<Meeting, ArrayList<User>>();
-
 	
 	public Meeting(
 			User userId, String title,
