@@ -32,7 +32,7 @@ public class Meeting extends MeetingLocation implements MeetingInterface {
 		
 	}
 	
-	public void proposeGroup(int meetId, 
+	public void membershipProposalForGroup(
 			ArrayList<User> mAttendee, ArrayList<User> mNotAttendee, 
 			ArrayList<User> mWaitlistMember) {
 		
@@ -102,6 +102,4 @@ public class Meeting extends MeetingLocation implements MeetingInterface {
 		this.meetingWaitingList = meetingWaitingList;
 	}
 
-		
-	
 }

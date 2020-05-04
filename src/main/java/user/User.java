@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class User implements UserInterface {
-	
-//	public static int meetingId = 0;
-	
+		
 	private String nom;
 	private String prenoms;
 	private HashMap<User, ArrayList<String>> myMessage = new HashMap<User, ArrayList<String>>();

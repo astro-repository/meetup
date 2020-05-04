@@ -28,9 +28,9 @@ public class MembersTest {
 		mAttendee.add(Frederic);
 		mAttendee.add(Moro);
 		
-		Meeting ordreDuJour = new Meeting(Cédrick, "First meeting Cédrick", "Mise au point", 5, "Abidjan");
-		ordreDuJour.proposeGroup(0, mAttendee, mNotAttendee, mWaitlistMember);
-		Cédrick.proposeMeetingAdmin(Amani, ordreDuJour);
+		Meeting myMeetingProposal = new Meeting(Cédrick, "First meeting Cédrick", "Mise au point", 5, "Abidjan");
+		myMeetingProposal.membershipProposalForGroup(mAttendee, mNotAttendee, mWaitlistMember);
+		Cédrick.proposeMeetingAdmin(Amani, myMeetingProposal);
 		
 		assertEquals("Proposition accepted to create meeting !\n Meeting Id is : 1", Amani.showProposition());
 		
