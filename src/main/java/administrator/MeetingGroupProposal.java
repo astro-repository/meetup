@@ -1,4 +1,4 @@
-package administration;
+package administrator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,15 +8,15 @@ import java.util.Scanner;
 import meetings.Meeting;
 import user.User;
 
-public class Administration extends User implements AdministrationInterface {
+public abstract class MeetingGroupProposal extends User {
 	
 	private static int meetingCompt = 0;
-	
-	private ArrayList<Meeting> allPropositions 			= new ArrayList<Meeting>();
-	private HashMap<Integer, Meeting> meetingAccepted 	= new HashMap<Integer, Meeting>();
+
+	private ArrayList<Meeting> allPropositions 					= new ArrayList<Meeting>();
+	private HashMap<Integer, Meeting> meetingAccepted 			= new HashMap<Integer, Meeting>();
 	public HashMap<Integer, ArrayList<String>> meetingMessage 	= new HashMap<Integer, ArrayList<String>>();
 
-	public Administration(String nom, String prenoms) {
+	public MeetingGroupProposal(String nom, String prenoms) {
 		super(nom, prenoms);
 	}
 	
@@ -27,7 +27,7 @@ public class Administration extends User implements AdministrationInterface {
 	public void setAllPropositions(Meeting proposition) {
 		this.allPropositions.add(proposition);
 	}
-	
+
 	public String showProposition() {
 		
 		Scanner clavier = new Scanner(System.in);
@@ -63,6 +63,8 @@ public class Administration extends User implements AdministrationInterface {
 			if ( response.equals("Y") ) {
 				meetingCompt++;
 				this.meetingAccepted.put(meetingCompt, meeting);
+				meeting.setDecision(MeetingGroupProposalDecision.Accept);
+				meeting.setStatutGroup(MeetingGroupProposalStatus.ACCEPTED);
 				ArrayList<String> msg = new ArrayList<String>();
 				msg.add(
 						"Group Create by "+ this.getNom() + " " + 
@@ -70,12 +72,12 @@ public class Administration extends User implements AdministrationInterface {
 									" " + meeting.getMember().getPrenoms()
 				);
 				this.meetingMessage.put(meetingCompt, msg);
-				clavier.close();
 				return "Proposition accepted to create meeting !\n Meeting Id is : " +
 						String.valueOf(meetingCompt);
 			} else {
 				this.allPropositions.remove(meeting);
-				clavier.close();
+				meeting.setDecision(MeetingGroupProposalDecision.Reject);
+				meeting.setStatutGroup(MeetingGroupProposalStatus.REJECTED);
 				return "Proposition refused to create meeting !";
 			}
 
@@ -84,12 +86,10 @@ public class Administration extends User implements AdministrationInterface {
 		return "Proposition not found !";
 	}
 
-	
 	public HashMap<Integer, Meeting> getMeetingAccepted() {
 		return meetingAccepted;
 	}
 	
-
 	public void setMeetingAccepted(HashMap<Integer, Meeting> meetingAccepted) {
 		this.meetingAccepted = meetingAccepted;
 	}

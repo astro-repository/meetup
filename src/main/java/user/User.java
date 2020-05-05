@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class User implements UserInterface {
-		
+public abstract class User extends UserRegistration implements UserInterface {
+	/**
+	 * userRole est utilisé comme élément de composition
+	 * pour qu'en cas d'instantiation de la classe
+	 * un role puisse est attribué à l'utilisateur
+	 * selon le cas où il soit Administrator, Member ou Payer
+	 */
+	public UserRole userRole;
+
 	private String nom;
 	private String prenoms;
 	private HashMap<User, ArrayList<String>> myMessage = new HashMap<User, ArrayList<String>>();
@@ -14,11 +21,12 @@ public abstract class User implements UserInterface {
 
 		this.nom 		= nom;
 		this.prenoms 	= prenoms;
-		
+		this.userRole	= new UserRole(this);
+
 	}
 
 	public void sendMessage(User to, String msg) {
-		
+
 		if ( to.myMessage.containsKey(this) ) {
 			to.myMessage.get(this).add(msg);
 		}else {
@@ -26,14 +34,18 @@ public abstract class User implements UserInterface {
 			tableau.add(msg);
 			to.myMessage.put(this, tableau);
 		}
-		
+
 	}
 
 	public void readLastUserMessage(User friend) {
 		
 		if ( this.myMessage.containsKey(friend) ) {
 			int msgSize = this.myMessage.get(friend).size()-1;
-			System.out.println( friend.getNom() + " " + friend.getPrenoms() +" : " + this.myMessage.get(friend).get( msgSize ) );
+			System.out.println(
+					friend.getNom() + " " + 
+							friend.getPrenoms() + " : " +
+								this.myMessage.get(friend).get( msgSize )
+			);
 		}
 		else
 			System.out.println("Message not found !");
@@ -43,7 +55,11 @@ public abstract class User implements UserInterface {
 	public void readAllUserMessage(User author) {
 		if ( this.myMessage.containsKey(author) ) {
 			for (String msg : this.myMessage.get(author)) {
-				System.out.println(author.getNom() + " " + author.getPrenoms() + " : " + msg);
+				System.out.println(
+						author.getNom() + " "
+							+author.getPrenoms() + " : "
+								+ msg
+				);
 			}
 		} else {
 			System.out.println("Messages not found !");
@@ -64,7 +80,6 @@ public abstract class User implements UserInterface {
 		}
 	}
 	
-
 	public String getNom() {
 		return nom;
 	}

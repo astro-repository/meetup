@@ -1,6 +1,6 @@
 package members;
 
-import administration.Administration;
+import administrator.Administrator;
 import meetings.Meeting;
 import user.User;
 
@@ -10,11 +10,11 @@ public class Members extends User {
 		super(nom, prenoms);
 	}
 	
-	public void proposeMeetingAdmin(Administration admin, Meeting meeting) {
+	public void proposeMeetingAdmin(Administrator admin, Meeting meeting) {
 		admin.setAllPropositions(meeting);
 	}
 	
-	public void sendMessageInMeetingGroup(Administration groupAdmin, int meetId, String msg) {
+	public void sendMessageInMeetingGroup(Administrator groupAdmin, int meetId, String msg) {
 		
 		if ( groupAdmin.getMeetingAccepted().containsKey(meetId) ) {
 			
@@ -38,7 +38,7 @@ public class Members extends User {
 		
 	}
 
-	public void readAllMessageInMeetingGroup(Administration groupAdmin, int meetId) {
+	public void readAllMessageInMeetingGroup(Administrator groupAdmin, int meetId) {
 		
 		if ( groupAdmin.getMeetingAccepted().containsKey(meetId) ) {
 			
@@ -61,7 +61,7 @@ public class Members extends User {
 
 	}
 	
-	public String readLastMessageInMeetingGroup(Administration groupAdmin, int meetId) {
+	public String readLastMessageInMeetingGroup(Administrator groupAdmin, int meetId) {
 		
 		if ( groupAdmin.getMeetingAccepted().containsKey(meetId) ) {
 			

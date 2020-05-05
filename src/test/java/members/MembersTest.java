@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import administration.Administration;
+import administrator.Administrator;
 import meetings.Meeting;
 import user.User;
 
 public class MembersTest {
 	
-	Administration Amani = new Administration("Amani", "Christian");
+	Administrator Amani = new Administrator("Amani", "Christian");
 	Members Frederic = new Members("Boye", "Fréderic");
 	Members Cédrick = new Members("Touré", "Cédrick");
 	Members Moro = new Members("Moro", "Usernknown");

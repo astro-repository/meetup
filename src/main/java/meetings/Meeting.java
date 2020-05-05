@@ -3,50 +3,71 @@ package meetings;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import administrator.MeetingGroupProposalDecision;
+import administrator.MeetingGroupProposalStatus;
 import user.User;
 
-public class Meeting extends MeetingLocation implements MeetingInterface {
+public class Meeting implements MeetingInterface {
 	
 	private String 	title;
 	private String 	description;
 	private int 	attendeesLimit;
 	private User 	member;
 	
+	private HashMap<Meeting, ArrayList<User>> meetingNotAttendee 	= new HashMap<Meeting, ArrayList<User>>();
+	private HashMap<Meeting, ArrayList<User>> meetingAttendeeList 	= new HashMap<Meeting, ArrayList<User>>();
+	private HashMap<Meeting, ArrayList<User>> meetingWaitingList 	= new HashMap<Meeting, ArrayList<User>>();
 	
-	private HashMap<Meeting, ArrayList<User>> meetingNotAttendee 		= new HashMap<Meeting, ArrayList<User>>();
-	private HashMap<Meeting, ArrayList<User>> meetingAttendeeList 		= new HashMap<Meeting, ArrayList<User>>();
-	private HashMap<Meeting, ArrayList<User>> meetingWaitingList 		= new HashMap<Meeting, ArrayList<User>>();
+	public MeetingLocation location;
+	public MeetingGroupProposalDecision decision;
+	public MeetingGroupProposalStatus statutGroup = MeetingGroupProposalStatus.INVERIFICATION;
 	
 	public Meeting(
 			User userId, String title,
 			String description, int attendeesLimit,
 			String locationCity
 			) {
-		
-		super(locationCity);
+
 		this.member			= userId;
 		this.title 			= title;
 		this.description 	= description;
 		this.attendeesLimit = attendeesLimit;
-		
+		this.location 		= new MeetingLocation(locationCity);
+
 	}
 	
 	public void membershipProposalForGroup(
 			ArrayList<User> mAttendee, ArrayList<User> mNotAttendee, 
 			ArrayList<User> mWaitlistMember) {
-		
+
 		if (
 				mAttendee.size()<this.attendeesLimit && 
 				mNotAttendee.size()<this.attendeesLimit && 
 				mWaitlistMember.size()<this.attendeesLimit
 				) {
-			
+
 			this.meetingAttendeeList.put(this, mAttendee);
 			this.meetingNotAttendee.put(this, mNotAttendee);
 			this.meetingWaitingList.put(this, mWaitlistMember);
-			
+
 		}
 		
+	}
+	
+	public MeetingGroupProposalDecision getDecision() {
+		return decision;
+	}
+
+	public void setDecision(MeetingGroupProposalDecision decision) {
+		this.decision = decision;
+	}
+	
+	public MeetingGroupProposalStatus getStatutGroup() {
+		return statutGroup;
+	}
+
+	public void setStatutGroup(MeetingGroupProposalStatus statutGroup) {
+		this.statutGroup = statutGroup;
 	}
 
 	public String getTitle() {
