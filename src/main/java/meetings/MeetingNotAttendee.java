@@ -20,4 +20,7 @@ public class MeetingNotAttendee {
 		this.user = user;
 	}
 
+	public void addUser(User user) {
+		this.user.add(user);
+	}
 }

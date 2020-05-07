@@ -20,4 +20,7 @@ public class MeetingWaitlistMember {
 		this.user = user;
 	}
 
+	public void addUser(User user) {
+		this.user.add(user);
+	}
 }

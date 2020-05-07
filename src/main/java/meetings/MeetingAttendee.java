@@ -19,5 +19,9 @@ public class MeetingAttendee {
 	public void setUser(ArrayList<User> user) {
 		this.user = user;
 	}
+	
+	public void addUser(User user) {
+		this.user.add(user);
+	}
 
 }
