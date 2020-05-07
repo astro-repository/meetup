@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class User extends UserRegistration implements UserInterface {
-	/**
-	 * userRole est utilisé comme élément de composition
-	 * pour qu'en cas d'instantiation de la classe
-	 * un role puisse est attribué à l'utilisateur
-	 * selon le cas où il soit Administrator, Member ou Payer
-	 */
-	public UserRole userRole;
+public abstract class User implements MessageAction {
+
+	public ArrayList<UserRole> userRole;
+	public ArrayList<UserRegistration> userRegistration;
 
 	private String nom;
 	private String prenoms;
@@ -21,8 +17,17 @@ public abstract class User extends UserRegistration implements UserInterface {
 
 		this.nom 		= nom;
 		this.prenoms 	= prenoms;
-		this.userRole	= new UserRole(this);
+		
+		createRegistration();
 
+	}
+	
+	public void createRegistration() {
+		this.userRegistration.add( new UserRegistration(this) );
+	}
+	
+	public void createRole() {
+		this.userRole.add( new UserRole( this, new Permission() ) );
 	}
 
 	public void sendMessage(User to, String msg) {

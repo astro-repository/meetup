@@ -1,40 +1,31 @@
 package user;
 
-public class UserRole extends Permission {
-	private User userName;
-	
-	public UserRole(User user) {
-		this.userName = user;
+import java.util.ArrayList;
+
+public class UserRole {
+
+	private User user;
+	private ArrayList<Permission> userPermission;
+
+	public UserRole(User user, Permission permission) {
+		this.user = user;
+		this.userPermission.add(permission);
 	}
-	
+
+	public void addPermission(Permission permission) {
+		this.userPermission.add(permission);
+	}
+
 	public void roleAdmin() {
-		
-		this.isAdministrator();
-		System.out.println(
-				this.userName.getNom() +
-					" is permited ton administrated group."
-		);
-		
+
 	}
-	
+
 	public void roleMember() {
 		
-		this.isMember();
-		System.out.println(
-				this.userName.getNom() +
-					" is permited to create meeting."
-		);
-		
 	}
-	
+
 	public void rolePayer() {
-		
-		this.isPayer();
-		System.out.println(
-				this.userName.getNom() +
-					" is permited to pay to participate meeting."
-		);
-		
+
 	}
 
 }

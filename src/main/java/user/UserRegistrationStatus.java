@@ -1,9 +1,9 @@
 package user;
 
-public enum UserRegistrationStatusInterface {
-	
+public enum UserRegistrationStatus {
+
 	WaitingForConfirmation,
 	Confirmed,
 	Expired
-	
+
 }

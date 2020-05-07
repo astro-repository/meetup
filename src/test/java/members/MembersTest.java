@@ -24,22 +24,7 @@ public class MembersTest {
 
 	@Test
 	public void test() {
-		
-		mAttendee.add(Frederic);
-		mAttendee.add(Moro);
-		
-		Meeting myMeetingProposal = new Meeting(Cédrick, "First meeting Cédrick", "Mise au point", 5, "Abidjan");
-		myMeetingProposal.membershipProposalForGroup(mAttendee, mNotAttendee, mWaitlistMember);
-		Cédrick.proposeMeetingAdmin(Amani, myMeetingProposal);
-		
-		assertEquals("Proposition accepted to create meeting !\n Meeting Id is : 1", Amani.showProposition());
-		
-		Moro.sendMessageInMeetingGroup(Amani, 1, "TEst tgh");
-		Moro.sendMessageInMeetingGroup(Amani, 1, "Message");
-		Frederic.sendMessageInMeetingGroup(Amani, 1, "TEst");
 
-		assertEquals("Boye Fréderic : TEst", Frederic.readLastMessageInMeetingGroup(Amani, 1));
-		
 	}
 
 }

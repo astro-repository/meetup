@@ -1,6 +1,6 @@
 package user;
 
-public interface UserInterface {
+public interface MessageAction {
 	
 	void sendMessage(User to, String msg);
 	void readLastUserMessage(User friend);

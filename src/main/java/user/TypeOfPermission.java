@@ -1,6 +1,6 @@
 package user;
 
-public enum EnumPermission {
+public enum TypeOfPermission {
 
 	Administrator,
 	Member,
