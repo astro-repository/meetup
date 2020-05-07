@@ -2,8 +2,6 @@ package administrator;
 
 import java.util.ArrayList;
 
-import meetings.Meeting;
-import meetings.MeetingGroup;
 import user.User;
 
 public class Administrator extends User {
